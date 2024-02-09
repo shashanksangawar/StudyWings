@@ -1,0 +1,16 @@
+{
+  "name": "studywings",
+  "version": "1.0.0",
+  "description": "Abroad Education Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "keywords": [
+    "education",
+    "foreign",
+    "abroad"
+  ],
+  "author": "Appniche Technologies",
+  "license": "ISC"
+}
