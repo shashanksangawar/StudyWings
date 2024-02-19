@@ -16,16 +16,14 @@ CREATE TABLE student_registration(
     Student_DOB VARCHAR(20) NOT NULL,
     Student_Address VARCHAR(255) NOT NULL,
     Student_ProfilePic LONGBLOB NOT NULL,
-    ApplicationID INT,
     FOREIGN KEY (StudentID) REFERENCES students(Student_Id)
-    FOREIGN KEY (ApplicationID) REFERENCES APPLICATIONS.applications(Application_Id)
 );
 
 CREATE TABLE student_documents(
     Student_DocumentId INT AUTO_INCREMENT PRIMARY KEY,
     StudentID INT NOT NULL,
-    Student_DocumentType VARCHAR(100) NOT NULL,
-    Student_DocumentPath VARCHAR(255) NOT NULL, --Stores path of Student's Docs
+    Student_DocumentName VARCHAR(100) NOT NULL,
+    Student_Document LONGBLOB NOT NULL,
     FOREIGN KEY (StudentID) REFERENCES students(Student_Id)
 );
 
