@@ -1,11 +1,13 @@
 CREATE DATABASE STUDENTS;
 
+USE STUDENTS;
+
 CREATE TABLE students(
     Student_Id INT AUTO_INCREMENT PRIMARY KEY,
     Student_UserName VARCHAR(100) NOT NULL,
     Student_PasswordHash VARCHAR(100) NOT NULL,
     Student_Phone VARCHAR(12) NOT NULL,
-    Student_Email VARCHAR(100) NOT NULL,
+    Student_Email VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE student_registration(
