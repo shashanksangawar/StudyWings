@@ -2,11 +2,19 @@
 const express = require('express');
 const router = express.Router();
 router.use(express.json());
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+
+// <---- Session Variable ---->
+router.use(cookieParser());
+router.use(session({secret: "Your secret key"}));
+
 
 // <---- Image taking as input Modules ---->
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+
 
 // <---- Backend Modules ---->
 const account = require('../backend_modules/students/account');
@@ -29,6 +37,7 @@ router.post("/login", async function(request, response)
 
         if (loginResult.returncode === 0) 
         {
+            request.session.user = loginResult.output;
             response.status(200).send({'returncode': 0, 'message': 'Authentication Verified', 'output': loginResult.output});
         }
         else 
@@ -55,6 +64,7 @@ router.post("/register", async function(request, response)
         // Check the return code to determine success or failure
         if (registrationResult.returncode === 0)
         {
+            request.session.user = registrationResult.output;
             response.status(200).send({'returncode': 0, 'message': 'User Created Successfully', 'output': registrationResult.output});
         }
         else 
