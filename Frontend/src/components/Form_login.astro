@@ -40,6 +40,7 @@
       .then(data =>
         {
             if(data.returncode === 0){
+              console.log(data);
               alert(data.message);
               window.location = '/';
             }else{

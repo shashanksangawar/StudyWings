@@ -1,0 +1,25 @@
+.navbar {
+	height: 8dvh;
+	background-color: #fff;
+	padding: 2rem var(--main-padding);
+	z-index: 1000;
+}
+
+.navbar-menu-btn>.bar {
+	display: block;
+	width: 40px;
+	height: 5px;
+	background-color: var(--primary-color);
+	margin-top: 8px;
+	border-radius: 5px;
+}
+
+#ani_input {
+	width: 400px;
+	transition: width 1s ease-in-out;
+	color: var(--primary-color);
+}
+
+#ani_input:focus {
+	width: 70dvw;
+}

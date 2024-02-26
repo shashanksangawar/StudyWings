@@ -1,0 +1,13 @@
+---
+import Layout from "../../layout/Layout.astro";
+import Navbar from "../../components/Navbar";
+import ProfilePanel from "../../components/ProfilePanel";
+import "../../assets/styles/index.css";
+---
+
+<Layout title="Home">
+	<div>
+		<Navbar />
+		<ProfilePanel client:load />
+	</div>
+</Layout>
