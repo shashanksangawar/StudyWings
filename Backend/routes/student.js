@@ -234,7 +234,7 @@ router.post("/account/details/add",  async function(request, response)
 });
 
 // User Registration Update
-router.post("/account/details/update", upload.single('image'), async function(request, response)
+router.post("/account/details/update", async function(request, response)
 {
     const first_name = request.body.first_name;
     const last_name = request.body.last_name;

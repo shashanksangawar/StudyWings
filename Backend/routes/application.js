@@ -57,7 +57,7 @@ router.post("/fetch", async function(request, response)
     }
 });
 
-// Read a Student Application
+// Read Students Application
 router.get("/fetch/admin", async function(request, response)
 {
     try 
