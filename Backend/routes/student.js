@@ -2,19 +2,19 @@
 const express = require('express');
 const router = express.Router();
 router.use(express.json());
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
+// var session = require('express-session');
+// var cookieParser = require('cookie-parser');
 
-// <---- Session Variable ---->
-router.use(cookieParser());
-router.use(session({
-    secret: 'mySecretKey',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
-    }
-  }));
+// // <---- Session Variable ---->
+// router.use(cookieParser());
+// router.use(session({
+//     secret: 'mySecretKey',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
+//     }
+//   }));
   
 // <---- Image taking as input Modules ---->
 const multer = require('multer');
@@ -73,7 +73,6 @@ router.post("/register", async function(request, response)
         if (registrationResult.returncode === 0)
         {
             const user = registrationResult.output.Student_Id;
-            request.session.user = user;
             response.status(200).send({'returncode': 0, 'message': 'User Created Successfully', 'output': registrationResult.output});
         }
         else 
@@ -171,41 +170,34 @@ router.get("/logout", async function(request, response)
 // -------------------------------------------
 
 // User Registration Fetch
-router.get("/account/details/fetch", async function(request, response)
+router.post("/account/details/fetch", async function(request, response)
 {
-    const userid = request.session.user;
-    if (request.session.user) 
+    const userid = request.body.user;
+    try 
     {
-        try 
+        const fetchResult = await fetch.registration_info(userid);
+        
+        // Check the return code to determine success or failure
+        if (fetchResult.returncode === 0)
         {
-            const fetchResult = await fetch.registration_info(userid);
-            
-            // Check the return code to determine success or failure
-            if (fetchResult.returncode === 0)
-            {
-                response.status(200).send({'returncode': 0, 'message': 'User Account Registration Fetched Successfully', 'output': fetchResult.output});
-            }
-            else 
-            {
-                response.status(400).send({'returncode': 1, 'message': fetchResult.message, 'output': fetchResult.output});
-            }
-        } 
-        catch (error)
-        {
-            // Handle different types of errors (client-side vs server-side)
-            if (error.returncode)
-            {
-                response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
-            }
-            else 
-            {
-                response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
-            }
+            response.status(200).send({'returncode': 0, 'message': 'User Account Registration Fetched Successfully', 'output': fetchResult.output});
         }
-    }
-    else 
+        else 
+        {
+            response.status(400).send({'returncode': 1, 'message': fetchResult.message, 'output': fetchResult.output});
+        }
+    } 
+    catch (error)
     {
-        response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
+        // Handle different types of errors (client-side vs server-side)
+        if (error.returncode)
+        {
+            response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
+        }
+        else 
+        {
+            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
+        }
     }
 });
 
@@ -289,12 +281,10 @@ router.post("/account/details/update", upload.single('image'), async function(re
 // <------- User Documents ------->
 // --------------------------------
 
-// User Registration Fetch
+// User Documents Fetch
 router.post("/account/document/fetch", async function(request, response)
 {
     const userid = request.body.user;
-    if (request.session.user) 
-    {
         try 
         {
             const fetchResult = await fetch.document_info(userid);
@@ -322,20 +312,15 @@ router.post("/account/document/fetch", async function(request, response)
             }
         }
     }
-    else 
-    {
-        response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
-    }
-});
+);
 
 // Documents add
 router.post("/account/document/add", upload.single('image'), async function(request, response)
 {
     
-    const userid = request.session.user;
+    const userid = request.body.user;
     const doc_name = request.body.doc_name;
     const doc_buffer = request.file.buffer;
-    // const doc_buffer = request.body.doc;
     try 
     {
         const addResult = await document.document_add(userid, doc_name, doc_buffer);
