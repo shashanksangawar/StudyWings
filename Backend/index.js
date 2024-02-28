@@ -21,10 +21,12 @@ app.use(cors());
 
 // Importing route files
 const studentRouter = require('./routes/student');
+const rootRouter = require('./routes/root');
 
 // --------------------------
 //<---- Using route file ---->
 app.use('/api/student', studentRouter);
+app.use('/api/root', rootRouter);
 
 // --------------------------
 
