@@ -1,31 +1,59 @@
+import { useEffect } from "react";
 import "../assets/styles/navbar.css";
+import img1 from "../assets/img/img1.jpg";
 
 const Navbar = () => {
+
+  useEffect(() => {
+
+    const btn = document.getElementById('navbar_menu_button');
+    const menu = document.getElementById('navbar_float_menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle("hidden");
+    })
+
+  }, []);
+
   return (
-    <nav className="navbar flex justify-between items-center fixed w-full z-0">
-      <div className="brand grid place-items-center">
-        <a className="navbar-item" href="/">
-          <h1 className="text-4xl text-[--primary-color] font-semibold flex justify-center items-center">StudyWings</h1>
-        </a>
-      </div>
+    <header className="w-full h-[8dvh] bg-gradient-to-r from-[--ui] to-[--bg]">
 
+      <nav className="flex justify-between items-center px-4">
 
-      <div className="navbar-menu-btn lg:hidden block">
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </div>
-
-      <div className="hidden navbar-menu lg:flex justify-between items-center gap-[1.5rem] lg:text-lg text-base">
-        <div className="md:block hidden">
-          <input id="ani_input" className="p-2 rounded-full border border-gray-700  px-6 text-xl font-semibold" type="text" placeholder="Search" />
+        <div className="navbar_title h-[8dvh] flex justify-between items-center gap-8">
+          <div className="title text-3xl text-gray-900 font-bold">StudyWings</div>
         </div>
-        <span className="link hover:text-[--primary-color] hover:underline"><a href="/">Home</a></span>
-        <span className="link hover:text-[--primary-color] hover:underline"><a href="/profile">Profile</a></span>
-        <span id="log_btn" className="link block text-[--primary-fg] border-[--primary-color] border-2 hover:bg-[--primary-color] hover:text-white transition-colors px-4 py-2 rounded-full"><a href="/login">Sign-in</a></span>
-      </div>
-    </nav>
-  )
+
+        <div className="navbar_menu text-lg flex items-center gap-8">
+          <span className="navbar_items">Application</span>
+          <span className="navbar_items">University</span>
+          <span className="navbar_items">Country</span>
+          <span className="navbar_items">Courses</span>
+        </div>
+
+        <div id="navbar_float_menu" className="hidden absolute top-[9dvh] right-3 w-[300px] h-[250px] py-3 rounded-lg bg-[--bg]">
+          <div className="flex h-full flex-col justify-between items-center px-2 text-xl " >
+            <div className="container flex justify-between items-center gap-8 py-4">
+              <div className="w-[40%] flex justify-center items-center">
+                <img className="rounded-full" src={img1.src} alt="dummy image" width={50} />
+              </div>
+              <span className="section w-[70%]">Name</span>
+            </div>
+            <span className="flex justify-center items-center hover:bg-[--color2] px-4 w-full h-[40px] rounded-lg"><a href="/">Home</a></span>
+            <span className="flex justify-center items-center hover:bg-[--color2] px-4 w-full h-[40px] rounded-lg"><a href="/profile">Profile</a></span>
+            <span className="flex justify-center items-center hover:bg-[--color2] px-4 bg-[--color2] w-full h-[40px] rounded-lg"><a className="flex gap-4" href="/login"><i className="bi bi-box-arrow-right block"></i> Sign in</a></span>
+          </div>
+        </div>
+
+        <div id="navbar_menu_button" className="navbar_menu_button text-2xl flex items-center gap-2 bg-[--color2] px-3 py-1 rounded-full cursor-pointer">
+          <i className="bi bi-list"></i>
+          <img id="image" className="w-[25px] h-[25px] rounded-full border-[2px] border-[#1d1d1b]" src={img1.src} alt="profile pic" />
+        </div>
+
+      </nav>
+
+    </header>
+  );
 }
 
 export default Navbar;

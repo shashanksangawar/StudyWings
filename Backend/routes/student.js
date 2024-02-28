@@ -10,7 +10,10 @@ router.use(cookieParser());
 router.use(session({
     secret: 'mySecretKey',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
+    }
   }));
   
 // <---- Image taking as input Modules ---->
@@ -42,7 +45,7 @@ router.post("/login", async function(request, response)
         if (loginResult.returncode === 0) 
         {
 			const user = loginResult.output.Student_Id;
-            request.session.user = user;
+            // request.session.user = user;
             response.status(200).send({'returncode': 0, 'message': 'Authentication Verified', 'output': loginResult.output});
         }
         else 
@@ -209,45 +212,37 @@ router.get("/account/details/fetch", async function(request, response)
 // User Registration Add
 router.post("/account/details/add", upload.single('image'), async function(request, response)
 {
-
-    if (request.session.user) 
+    const userid = request.body.user;
+    const first_name = request.body.first_name;
+    const last_name = request.body.last_name;
+    const dob = request.body.dob;
+    const address = request.body.address;
+    const profile_buffer = request.file.buffer;
+    try 
     {
-        const userid = request.session.user;
-        const first_name = request.body.first_name;
-        const last_name = request.body.last_name;
-        const dob = request.body.dob;
-        const address = request.body.address;
-        const profile_buffer = request.file.buffer;
-        try 
+        const addResult = await registration.registration_details_add(first_name, last_name, dob, address, profile_buffer, userid);
+        
+        // Check the return code to determine success or failure
+        if (addResult.returncode === 0)
         {
-            const addResult = await registration.registration_details_add(first_name, last_name, dob, address, profile_buffer, userid);
-            
-            // Check the return code to determine success or failure
-            if (addResult.returncode === 0)
-            {
-                response.status(200).send({'returncode': 0, 'message': 'User Account Registration Added Successfully', 'output': []});
-            }
-            else 
-            {
-                response.status(400).send({'returncode': 1, 'message': addResult.message, 'output': addResult.output});
-            }
-        } 
-        catch (error)
-        {
-            // Handle different types of errors (client-side vs server-side)
-            if (error.returncode)
-            {
-                response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
-            }
-            else 
-            {
-                response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
-            }
+            response.status(200).send({'returncode': 0, 'message': 'User Account Registration Added Successfully', 'output': []});
         }
-    }
-    else 
+        else 
+        {
+            response.status(400).send({'returncode': 1, 'message': addResult.message, 'output': addResult.output});
+        }
+    } 
+    catch (error)
     {
-        response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
+        // Handle different types of errors (client-side vs server-side)
+        if (error.returncode)
+        {
+            response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
+        }
+        else 
+        {
+            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
+        }
     }
 });
 
@@ -295,9 +290,9 @@ router.post("/account/details/update", upload.single('image'), async function(re
 // --------------------------------
 
 // User Registration Fetch
-router.get("/account/document/fetch", async function(request, response)
+router.post("/account/document/fetch", async function(request, response)
 {
-    const userid = request.session.user;
+    const userid = request.body.user;
     if (request.session.user) 
     {
         try 
@@ -336,83 +331,72 @@ router.get("/account/document/fetch", async function(request, response)
 // Documents add
 router.post("/account/document/add", upload.single('image'), async function(request, response)
 {
-    if(request.session.user)
+    
+    const userid = request.session.user;
+    const doc_name = request.body.doc_name;
+    const doc_buffer = request.file.buffer;
+    // const doc_buffer = request.body.doc;
+    try 
     {
-        const userid = request.session.user;
-        const doc_name = request.body.doc_name;
-        // const doc_buffer = request.file.buffer;
-        const doc_buffer = request.body.doc;
-        try 
+        const addResult = await document.document_add(userid, doc_name, doc_buffer);
+        
+        // Check the return code to determine success or failure
+        if (addResult.returncode === 0)
         {
-            const addResult = await document.document_add(userid, doc_name, doc_buffer);
-            
-            // Check the return code to determine success or failure
-            if (addResult.returncode === 0)
-            {
-                response.status(200).send({'returncode': 0, 'message': 'Document Added Successfully', 'output': []});
-            }
-            else 
-            {
-                response.status(400).send({'returncode': 1, 'message': addResult.message, 'output': addResult.output});
-            }
-        } 
-        catch (error)
+            response.status(200).send({'returncode': 0, 'message': 'Document Added Successfully', 'output': []});
+        }
+        else 
         {
-            // Handle different types of errors (client-side vs server-side)
-            if (error.returncode)
-            {
-                response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
-            }
-            else 
-            {
-                response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
-            }
+            response.status(400).send({'returncode': 1, 'message': addResult.message, 'output': addResult.output});
+        }
+    } 
+    catch (error)
+    {
+        // Handle different types of errors (client-side vs server-side)
+        if (error.returncode)
+        {
+            response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
+        }
+        else 
+        {
+            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
         }
     }
-    else 
-    {
-        response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
-    }
-});
+}
+);
 
 // Document Delete
 router.post("/account/document/delete", async function(request, response)
 {
-    if(request.session.userid)
-    {    
-        const { doc_id } = request.body
-        const userid = request.session.userid;
-        try 
+    const doc_id = request.body.doc_id
+    const userid = request.body.userid;
+    try 
+    {
+        const deleteResult = await document.document_delete(doc_id, userid);
+        
+        // Check the return code to determine success or failure
+        if (deleteResult.returncode === 0)
         {
-            const deleteResult = await document.document_delete(doc_id, userid);
-            
-            // Check the return code to determine success or failure
-            if (deleteResult.returncode === 0)
-            {
-                response.status(200).send({'returncode': 0, 'message': 'User Deleted Successfully', 'output': []});
-            }
-            else 
-            {
-                response.status(400).send({'returncode': 1, 'message': deleteResult.message, 'output': deleteResult.output});
-            }
-        } 
-        catch (error)
+            response.status(200).send({'returncode': 0, 'message': 'User Deleted Successfully', 'output': []});
+        }
+        else 
         {
-            // Handle different types of errors (client-side vs server-side)
-            if (error.returncode)
-            {
-                response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
-            }
-            else 
-            {
-                response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
-            }
+            response.status(400).send({'returncode': 1, 'message': deleteResult.message, 'output': deleteResult.output});
+        }
+    } 
+    catch (error)
+    {
+        // Handle different types of errors (client-side vs server-side)
+        if (error.returncode)
+        {
+            response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
+        }
+        else 
+        {
+            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
         }
     }
-    else 
-    {
-        response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
-    }
-});
+}
+);
 
 module.exports = router;

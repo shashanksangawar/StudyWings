@@ -7,7 +7,7 @@ import "../assets/styles/index.css";
 
 <Layout title="Home">
 	<div>
-		<Navbar />
-		<LoginForm client:load />
+		<Navbar client:load />
+		<LoginForm client:only="react" />
 	</div>
 </Layout>

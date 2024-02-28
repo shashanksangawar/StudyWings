@@ -44,4 +44,36 @@ const add = (country, description)=>
     });
 }
 
-module.exports = { add };
+const update = (country, description, country_id)=>
+{
+    return new Promise((resolve, reject)=>
+    {
+        // Get a connection from the pool
+        pool.getConnection((connection_error, connection)=>
+        {
+            if(connection_error)
+            {
+                reject({'returncode': 1, 'message': connection_error, 'output': []});
+                return;
+            }
+
+
+            // Updating a Country
+            const query = 'UPDATE countries SET Country=?, Description=? WHERE CountryId=?';
+            connection.query(query, [country, description, country_id], (queryError, results) => 
+            {
+                connection.release();
+                if(queryError)
+                {
+                    reject({'returncode': 1, 'message': queryError, 'output': []});
+                    return;
+                }
+
+                resolve({'returncode': 0, 'message': 'Country updated successfully', 'output': results[0]});
+            });
+        });
+    });
+}
+
+
+module.exports = { add, update };

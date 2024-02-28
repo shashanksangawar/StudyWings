@@ -13,7 +13,6 @@ const pool = mysql.createPool(
     queueLimit: 0
 });
 
-// Create a new university
 const add = ( name, location, description, ranking, admission_process)=>
 {
     return new Promise((resolve, reject)=>
@@ -45,4 +44,36 @@ const add = ( name, location, description, ranking, admission_process)=>
     });
 }
 
-module.exports = { add };
+
+const update = (name, location, description, ranking, admission_process, university_id)=>
+{
+    return new Promise((resolve, reject)=>
+    {
+        // Get a connection from the pool
+        pool.getConnection((connection_error, connection)=>
+        {
+            if(connection_error)
+            {
+                reject({'returncode': 1, 'message': connection_error, 'output': []});
+                return;
+            }
+
+
+            // Updating a University
+            const query = 'UPDATE universities SET University_Name=?, University_Location=?, Description=?, University_Ranking=?, University_AdmissionProcess=? WHERE University_Id=?';
+            connection.query(query, [name, location, description, ranking, admission_process, university_id], (queryError, results) => 
+            {
+                connection.release();
+                if(queryError)
+                {
+                    reject({'returncode': 1, 'message': queryError, 'output': []});
+                    return;
+                }
+
+                resolve({'returncode': 0, 'message': 'Country updated successfully', 'output': results[0]});
+            });
+        });
+    });
+}
+
+module.exports = { add, update };
