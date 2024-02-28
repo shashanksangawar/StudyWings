@@ -16,11 +16,6 @@ router.use(express.json());
 //     }
 //   }));
   
-// <---- Image taking as input Modules ---->
-const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-
 
 // <---- Backend Modules ---->
 const account = require('../backend_modules/students/account');
@@ -202,14 +197,14 @@ router.post("/account/details/fetch", async function(request, response)
 });
 
 // User Registration Add
-router.post("/account/details/add", upload.single('image'), async function(request, response)
+router.post("/account/details/add",  async function(request, response)
 {
     const userid = request.body.user;
     const first_name = request.body.first_name;
     const last_name = request.body.last_name;
     const dob = request.body.dob;
     const address = request.body.address;
-    const profile_buffer = request.file.buffer;
+    const profile_buffer = request.body.image;
     try 
     {
         const addResult = await registration.registration_details_add(first_name, last_name, dob, address, profile_buffer, userid);
@@ -315,12 +310,12 @@ router.post("/account/document/fetch", async function(request, response)
 );
 
 // Documents add
-router.post("/account/document/add", upload.single('image'), async function(request, response)
+router.post("/account/document/add", async function(request, response)
 {
     
     const userid = request.body.user;
     const doc_name = request.body.doc_name;
-    const doc_buffer = request.file.buffer;
+    const doc_buffer = request.body.image;
     try 
     {
         const addResult = await document.document_add(userid, doc_name, doc_buffer);
