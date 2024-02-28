@@ -44,7 +44,6 @@ const add = ( name, location, description, ranking, admission_process)=>
     });
 }
 
-
 const update = (name, location, description, ranking, admission_process, university_id)=>
 {
     return new Promise((resolve, reject)=>
@@ -76,4 +75,39 @@ const update = (name, location, description, ranking, admission_process, univers
     });
 }
 
-module.exports = { add, update };
+const read = () =>
+{
+    return new Promise((resolve, reject) => 
+    {
+        pool.getConnection((err, connection) => 
+        {
+            if (err) 
+            {
+              reject({'returncode': 1, 'message': err, 'output': []});
+              return;
+            }
+            const query = 'SELECT * FROM universities;';
+            connection.query(query, (queryError, results) => {
+            connection.release();
+    
+            if (queryError) {
+                reject({'returncode': 1, 'message': queryError, 'output': []});
+                return;
+            }
+    
+            if (results.length > 0) 
+            {
+                // Countries Fetched
+                resolve({'returncode': 0, 'message': 'Fetched Universities', 'output': results});
+            } 
+            else 
+            {
+                // No Countries are available
+                reject({'returncode': 1, 'message': 'No Universities found', 'output': []});
+            }
+            });
+        });
+    });
+};
+
+module.exports = { add, update, read };

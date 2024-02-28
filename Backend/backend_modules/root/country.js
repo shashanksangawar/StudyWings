@@ -75,5 +75,39 @@ const update = (country, description, country_id)=>
     });
 }
 
+const read = () =>
+{
+    return new Promise((resolve, reject) => 
+    {
+        pool.getConnection((err, connection) => 
+        {
+            if (err) 
+            {
+              reject({'returncode': 1, 'message': err, 'output': []});
+              return;
+            }
+            const query = 'SELECT * FROM countries;';
+            connection.query(query, (queryError, results) => {
+            connection.release();
+    
+            if (queryError) {
+                reject({'returncode': 1, 'message': queryError, 'output': []});
+                return;
+            }
+    
+            if (results.length > 0) 
+            {
+                // Countries Fetched
+                resolve({'returncode': 0, 'message': 'Fetched Countries', 'output': results});
+            } 
+            else 
+            {
+                // No Countries are available
+                reject({'returncode': 1, 'message': 'No Countries found', 'output': []});
+            }
+            });
+        });
+    });
+};
 
-module.exports = { add, update };
+module.exports = { add, update, read };

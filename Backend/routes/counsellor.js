@@ -36,7 +36,6 @@ router.post("/login", async function(request, response)
     }
 });
 
-
 // Register
 router.post("/register", async function(request, response)
 {
