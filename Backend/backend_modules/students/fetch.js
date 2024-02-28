@@ -40,6 +40,9 @@ const registration_info = (user_id)=>
                 }
                 if(results.length > 0)
                 {
+                    results.forEach(element => {
+                        element.Image = Buffer.from(element.Image).toString('base64');
+                    });
                     resolve({'returncode': 0, 'message': 'Fetched successfully', 'output': results[0]});
                     return;
                     
@@ -82,6 +85,9 @@ const document_info = (user_id)=>
                 }
                 if(results.length > 0)
                 {
+                    results.forEach(element => {
+                        element.Image = Buffer.from(element.Image).toString('base64');
+                    });
                     resolve({'returncode': 0, 'message': 'Fetched successfully', 'output': results});
                     return;
                     
