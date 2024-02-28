@@ -241,7 +241,7 @@ router.post("/account/details/update", async function(request, response)
     const dob = request.body.dob;
     const address = request.body.address;
     const registration_id = request.body.registration_id;
-    const profile_buffer = request.file.buffer;
+    const profile_buffer = request.body.image;
 
     try 
     {
