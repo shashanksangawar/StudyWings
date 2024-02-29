@@ -3,7 +3,7 @@ CREATE DATABASE UNIVERSITIES;
 CREATE TABLE countries(
     CountryId INT AUTO_INCREMENT PRIMARY KEY,
     Country VARCHAR(100) NOT NULL,
-    Description VARCHAR(255) NOT NULL,
+    Description VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE universities(
@@ -12,7 +12,7 @@ CREATE TABLE universities(
     University_Location VARCHAR(255) NOT NULL,
     Description VARCHAR(255) NOT NULL,
     University_Ranking VARCHAR(3) NOT NULL,
-    University_AdmissionProcess VARCHAR(255) NOT NULL,
+    University_AdmissionProcess VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE university_courses(
@@ -25,7 +25,7 @@ CREATE TABLE university_courses(
     Course_Fees VARCHAR(10) NOT NULL,
     Course_StartDate DATE NOT NULL,
     Course_EndDate DATE NOT NULL,
-    Course_Status VARCHAR(100) NOT NULL
-    FOREIGN KEY (CountryID) REFERENCES countries(CountryId)
+    Course_Status VARCHAR(100) NOT NULL,
+    FOREIGN KEY (CountryID) REFERENCES countries(CountryId),
     FOREIGN KEY (UniversityID) REFERENCES universities(University_Id)
 );

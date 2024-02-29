@@ -7,6 +7,38 @@ router.use(express.json());
 const University = require('../backend_modules/application/university');
 const Student = require('../backend_modules/application/student');
 
+// Login
+router.post("/login", async function(request, response) 
+{
+    const { university_name, password } = request.body;
+
+    try 
+    {
+        if(password=="admin")
+        {
+            const insertionResult = await University.account_login(university_name);
+
+            if (insertionResult.returncode === 0) 
+            {
+                response.status(200).send({'returncode': 0, 'message': insertionResult.message, 'output': []});
+            }
+            else 
+            {
+                response.status(500).send({'returncode': 1, 'message': insertionResult.message, 'output': []});
+            }
+        }
+        else
+        {
+            response.status(400).send({'returncode': 1, 'message': 'Password Does not Match', 'output': []});
+        }
+    }
+
+    catch (error)
+    {
+        response.status(500).send({'returncode': 1, 'message': 'Temporary Server Down, Please try again after some time', 'output': []});
+    }
+});
+
 // Add Application
 router.post("/add", async function(request, response) 
 {
@@ -58,11 +90,12 @@ router.post("/fetch", async function(request, response)
 });
 
 // Read Students Application
-router.get("/fetch/admin", async function(request, response)
+router.post("/fetch/admin", async function(request, response)
 {
     try 
     {
-        const fetchResult = await University.read();
+        const { university_id } = request.body;
+        const fetchResult = await University.read(university_id);
         
         // Check the return code to determine success or failure
         if (fetchResult.returncode === 0)
@@ -112,3 +145,5 @@ router.post("/update", async function(request, response)
         response.status(500).send({'returncode': 1, 'message': 'Temporary Server Down, Please try again after some time', 'output': []});
     }
 });
+
+module.exports = router;

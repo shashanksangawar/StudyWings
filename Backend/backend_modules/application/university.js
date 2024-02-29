@@ -12,6 +12,46 @@ const pool = mysql.createPool(
     queueLimit: 0
 });
 
+// Authenticate existing University account
+const account_login = (university_name) => 
+{
+    return new Promise((resolve, reject) => 
+    {
+        pool.getConnection((connection_error, connection) => 
+        {
+            if (connection_error) 
+            {
+                reject({'returncode': 1, 'message': 'Error connecting to MariaDB', 'output': []});
+                return;
+            }
+
+            const query = 'SELECT * FROM universities WHERE University_Name = ?';
+            connection.query(query, [university_name], (queryError, results) => 
+            {
+                connection.release();
+        
+                if (queryError) 
+                {
+                    reject({'returncode': 1, 'message': queryError, 'output': []});
+                    return;
+                }
+        
+                if (results.length > 0) 
+                {
+                    // User authenticated successfully
+                    resolve({'returncode': 0, 'message': 'Authentication successful', 'output': results[0]});
+                } 
+                
+                else 
+                {
+                    // User not found or incorrect credentials
+                    reject({'returncode': 1, 'message': 'Authentication failed', 'output': []});
+                }
+            });
+        });
+    });
+};
+
 // Update a application
 const update = (app_status, app_id)=>
 {
@@ -45,7 +85,7 @@ const update = (app_status, app_id)=>
 }
 
 // Read Students application
-const read = () =>
+const read = (university_id) =>
 {
     return new Promise((resolve, reject) => 
     {
@@ -56,8 +96,8 @@ const read = () =>
               reject({'returncode': 1, 'message': err, 'output': []});
               return;
             }
-            const query = 'SELECT * FROM applications a, UNIVERSITIES.university_courses u, STUDENTS.students s, STUDENTS.student_registration sr, STUDENTS.student_documents sd,  WHERE a.CourseID=u.Course_Id AND a.StudentID=s.Student_Id AND sr.StudentID=s.Student_Id AND sd.StudentID=s.Student_Id;';
-            connection.query(query, (queryError, results) => {
+            const query = 'SELECT * FROM applications a, UNIVERSITIES.university_courses u, STUDENTS.students s, STUDENTS.student_registration sr, STUDENTS.student_documents sd,  WHERE a.CourseID=u.Course_Id AND a.StudentID=s.Student_Id AND sr.StudentID=s.Student_Id AND sd.StudentID=s.Student_Id AND u.UniversityID=?;';
+            connection.query(query, [university_id], (queryError, results) => {
             connection.release();
     
             if (queryError) {
@@ -83,7 +123,4 @@ const read = () =>
     });
 };
 
-
-
-
-module.exports = { update, read };
+module.exports = { update, read, account_login };

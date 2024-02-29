@@ -17,7 +17,7 @@ CREATE TABLE student_registration(
     Student_LastName VARCHAR(100) NOT NULL,
     Student_DOB VARCHAR(20) NOT NULL,
     Student_Address VARCHAR(255) NOT NULL,
-    Student_ProfilePic VARCHAR NOT NULL,
+    Student_ProfilePic VARCHAR(255) NOT NULL,
     FOREIGN KEY (StudentID) REFERENCES students(Student_Id)
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE student_documents(
     Student_DocumentId INT AUTO_INCREMENT PRIMARY KEY,
     StudentID INT NOT NULL,
     Student_DocumentName VARCHAR(100) NOT NULL,
-    Student_Document VARCHAR NOT NULL,
+    Student_Document VARCHAR(255) NOT NULL,
     FOREIGN KEY (StudentID) REFERENCES students(Student_Id)
 );
 

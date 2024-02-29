@@ -16,11 +16,11 @@ CREATE TABLE counsellors(
 CREATE TABLE counsellation_sessions(
     Counsellation_Id INT AUTO_INCREMENT PRIMARY KEY,
     StudentID INT NOT NULL,
-    CounsellorID INT NOT NULL,
-    Counsellation_Specification VARCHAR(255) NOT NULL,
-    Counsellation_Time DATETIME NOT NULL,
-    Counsellation_Link VARCHAR(255) NOT NULL,
-    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id)
+    CounsellorID INT,
+    Counsellation_Specification VARCHAR(255),
+    Counsellation_Time DATETIME,
+    Counsellation_Link VARCHAR(255),
+    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id),
     FOREIGN KEY (CounsellorID) REFERENCES counsellors(Counsellor_Id)
 );
 
@@ -30,6 +30,6 @@ CREATE TABLE predepart_sessions(
     StudentID INT NOT NULL,
     Predepart_Time DATETIME NOT NULL,
     Predepart_Link VARCHAR(255) NOT NULL,
-    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id)
+    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id),
     FOREIGN KEY (CounsellorID) REFERENCES counsellors(Counsellor_Id)
 );

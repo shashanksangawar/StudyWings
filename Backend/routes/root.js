@@ -79,7 +79,7 @@ router.get("/fetch/country", async function(request, response)
 {
     try 
     {
-        const fetchResult = await Course.read();
+        const fetchResult = await Country.read();
         
         // Check the return code to determine success or failure
         if (fetchResult.returncode === 0)
@@ -177,7 +177,7 @@ router.get("/fetch/university", async function(request, response)
 {
     try 
     {
-        const fetchResult = await Course.read();
+        const fetchResult = await University.read();
         
         // Check the return code to determine success or failure
         if (fetchResult.returncode === 0)

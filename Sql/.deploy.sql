@@ -29,7 +29,7 @@ CREATE TABLE universities(
     University_Location VARCHAR(255) NOT NULL,
     Description VARCHAR(255) NOT NULL,
     University_Ranking VARCHAR(3) NOT NULL,
-    University_AdmissionProcess VARCHAR(255) NOT NULL,
+    University_AdmissionProcess VARCHAR(255) NOT NULL
 );
 
 -- 4.
@@ -43,8 +43,8 @@ CREATE TABLE university_courses(
     Course_Fees VARCHAR(10) NOT NULL,
     Course_StartDate DATE NOT NULL,
     Course_EndDate DATE NOT NULL,
-    Course_Status VARCHAR(100) NOT NULL
-    FOREIGN KEY (CountryID) REFERENCES countries(CountryId)
+    Course_Status VARCHAR(100) NOT NULL,
+    FOREIGN KEY (CountryID) REFERENCES countries(CountryId),
     FOREIGN KEY (UniversityID) REFERENCES universities(University_Id)
 );
 
@@ -72,11 +72,11 @@ CREATE TABLE counsellors(
 CREATE TABLE counsellation_sessions(
     Counsellation_Id INT AUTO_INCREMENT PRIMARY KEY,
     StudentID INT NOT NULL,
-    CounsellorID INT NOT NULL,
-    Counsellation_Specification VARCHAR(255) NOT NULL,
-    Counsellation_Time DATETIME NOT NULL,
-    Counsellation_Link VARCHAR(255) NOT NULL,
-    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id)
+    CounsellorID INT,
+    Counsellation_Specification VARCHAR(255),
+    Counsellation_Time DATETIME,
+    Counsellation_Link VARCHAR(255),
+    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id),
     FOREIGN KEY (CounsellorID) REFERENCES counsellors(Counsellor_Id)
 );
 
@@ -91,9 +91,6 @@ CREATE TABLE applications(
     CourseID INT NOT NULL,
     StudentID INT NOT NULL,
     Application_Status VARCHAR(100) NOT NULL,
-    Application_TravelStatus VARCHAR(100) NOT NULL,
-    Application_PaymentStatus VARCHAR(100) NOT NULL,
-    Application_RemainingPayment VARCHAR(10),
     FOREIGN KEY (CourseID) REFERENCES UNIVERSITIES.university_courses(Course_Id),
     FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id)
 );
@@ -108,7 +105,7 @@ CREATE TABLE student_registration(
     Student_LastName VARCHAR(100) NOT NULL,
     Student_DOB VARCHAR(20) NOT NULL,
     Student_Address VARCHAR(255) NOT NULL,
-    Student_ProfilePic LONGBLOB NOT NULL,
+    Student_ProfilePic VARCHAR(255) NOT NULL,
     FOREIGN KEY (StudentID) REFERENCES students(Student_Id)
 );
 
@@ -118,7 +115,7 @@ CREATE TABLE student_documents(
     Student_DocumentId INT AUTO_INCREMENT PRIMARY KEY,
     StudentID INT NOT NULL,
     Student_DocumentName VARCHAR(100) NOT NULL,
-    Student_Document LONGBLOB NOT NULL,
+    Student_Document VARCHAR(255) NOT NULL,
     FOREIGN KEY (StudentID) REFERENCES students(Student_Id)
 );
 
@@ -138,7 +135,7 @@ CREATE TABLE predepart_sessions(
     StudentID INT NOT NULL,
     Predepart_Time DATETIME NOT NULL,
     Predepart_Link VARCHAR(255) NOT NULL,
-    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id)
+    FOREIGN KEY (StudentID) REFERENCES STUDENTS.students(Student_Id),
     FOREIGN KEY (CounsellorID) REFERENCES counsellors(Counsellor_Id)
 );
 

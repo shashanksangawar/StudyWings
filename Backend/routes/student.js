@@ -2,20 +2,6 @@
 const express = require('express');
 const router = express.Router();
 router.use(express.json());
-// var session = require('express-session');
-// var cookieParser = require('cookie-parser');
-
-// // <---- Session Variable ---->
-// router.use(cookieParser());
-// router.use(session({
-//     secret: 'mySecretKey',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
-//     }
-//   }));
-  
 
 // <---- Backend Modules ---->
 const account = require('../backend_modules/students/account');
@@ -130,35 +116,6 @@ router.post("/update", async function(request, response)
     }
 });
 
-
-// Logout
-router.get("/logout", async function(request, response)
-{
-    try
-    {
-        if (request.session) 
-        {
-            request.session.destroy();
-            response.status(200).send({'returncode': 0, 'message': 'User Logged Out Successfully', 'output': []});
-        }
-        else 
-        {
-            response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
-        }
-    }
-    catch (error)
-    {
-        // Handle different types of errors (client-side vs server-side)
-        if (error.returncode)
-        {
-            response.status(400).send({'returncode': 1, 'message': error.message, 'output': error.output});
-        }
-        else 
-        {
-            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
-        }
-    }
-});
 
 // -------------------------------------------
 // <------- User Account Registration ------->
