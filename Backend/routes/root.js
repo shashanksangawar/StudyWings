@@ -272,6 +272,37 @@ router.post("/update/university", async function(request, response)
 // <====== Course ======>
 
 // Fetch
+router.get("/fetch", async function(request, response)
+{
+    try 
+    {
+        const fetchResult = await Course.read_info();
+        
+        // Check the return code to determine success or failure
+        if (fetchResult.returncode === 0)
+        {
+            response.status(200).send({'returncode': 0, 'message': fetchResult.message, 'output': fetchResult.output});
+        }
+        else 
+        {
+            response.status(500).send({'returncode': 1, 'message': fetchResult.message, 'output': fetchResult.output});
+        }
+    } 
+  catch (error)
+    {
+        // Handle different types of errors (client-side vs server-side)
+        if (error.returncode)
+        {
+            response.status(503).send({'returncode': 1, 'message': error.message, 'output': error.output});
+        }
+        else 
+        {
+            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
+        }
+    }
+});
+
+// Fetch
 router.get("/fetch/course", async function(request, response)
 {
     try 

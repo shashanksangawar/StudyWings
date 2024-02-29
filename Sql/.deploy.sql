@@ -19,7 +19,7 @@ USE UNIVERSITIES;
 CREATE TABLE countries(
     CountryId INT AUTO_INCREMENT PRIMARY KEY,
     Country VARCHAR(100) NOT NULL,
-    Description VARCHAR(255) NOT NULL,
+    Description VARCHAR(255) NOT NULL
 );
 
 -- 3.

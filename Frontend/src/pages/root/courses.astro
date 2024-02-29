@@ -1,12 +1,12 @@
 ---
 import Layout from "../../layout/Layout.astro";
 import Navbar from "../../components/Navbar";
-import LoginForm from "../../components/RootLogin";
+import CoursesPage from "../../components/Courses";
 ---
 
-<Layout title="Root Panel">
+<Layout title="Country Page">
 	<div>
 		<Navbar client:only="react" />
-		<LoginForm client:only="react" />
+		<CoursesPage client:only="react" />
 	</div>
 </Layout>

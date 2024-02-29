@@ -67,9 +67,6 @@ const read = (student_id) =>
     
             if (results.length > 0) 
             {
-                results.forEach(element => {
-                    element.Image = Buffer.from(element.Image).toString('base64');
-                  });
                 // Destinations Fetched
                 resolve({'returncode': 0, 'message': 'Fetched Products', 'output': results});
             } 

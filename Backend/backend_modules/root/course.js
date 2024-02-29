@@ -28,7 +28,7 @@ const add = (university_id, country_id, name, description, duration, fees, start
 
 
             // Adding a new Country
-            const query = 'INSERT INTO university_courses (UniversityID, CountryID, Course_Name, Course_Description, Course_Duration, Course_Fees, Course_StartDate, Course_EndDate, Course_Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+            const query = 'INSERT INTO university_courses (UniversityID, CountryID, Course_Name, Course_Description, Course_Duration, Course_Fees, Course_StartDate, Course_EndDate, Course_Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
             connection.query(query, [university_id, country_id, name, description, duration, fees, start_date, end_date, status], (queryError, results) => 
             {
                 connection.release();
@@ -110,4 +110,39 @@ const read = () =>
     });
 };
 
-module.exports = { add, update, read };
+const read_info = () =>
+{
+    return new Promise((resolve, reject) => 
+    {
+        pool.getConnection((err, connection) => 
+        {
+            if (err) 
+            {
+              reject({'returncode': 1, 'message': err, 'output': []});
+              return;
+            }
+            const query = 'SELECT * FROM university_courses uc, universities u WHERE uc.UniversityID=u.University_Id;';
+            connection.query(query, (queryError, results) => {
+            connection.release();
+    
+            if (queryError) {
+                reject({'returncode': 1, 'message': queryError, 'output': []});
+                return;
+            }
+    
+            if (results.length > 0) 
+            {
+                // Countries Fetched
+                resolve({'returncode': 0, 'message': 'Fetched Info', 'output': results});
+            } 
+            else 
+            {
+                // No Countries are available
+                reject({'returncode': 1, 'message': 'No Courses found', 'output': []});
+            }
+            });
+        });
+    });
+};
+
+module.exports = { add, update, read, read_info };

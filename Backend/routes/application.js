@@ -75,7 +75,7 @@ router.post("/fetch", async function(request, response)
 
         if (fetchResult.returncode === 0) 
         {
-            response.status(200).send({'returncode': 0, 'message': fetchResult.message, 'output': []});
+            response.status(200).send({'returncode': 0, 'message': fetchResult.message, 'output': fetchResult.output});
         }
         else 
         {

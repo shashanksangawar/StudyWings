@@ -26,9 +26,9 @@ const Navbar = () => {
 
         <div className="navbar_menu text-lg flex items-center gap-8">
           <span className="navbar_items">Application</span>
-          <span className="navbar_items">University</span>
-          <span className="navbar_items">Country</span>
-          <span className="navbar_items">Courses</span>
+          <a href="/root/university" className="navbar_items">University</a>
+          <a href="/root/country" className="navbar_items">Country</a>
+          <a href="/root/courses" className="navbar_items">Courses</a>
         </div>
 
         <div id="navbar_float_menu" className="hidden absolute top-[9dvh] right-3 w-[300px] h-[250px] py-3 rounded-lg bg-[--bg]">

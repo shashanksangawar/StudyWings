@@ -2,10 +2,8 @@
 // doing POST request using axios for the first time
 import axios from "axios";
 
-
-const handelSubmit = (event) =>{
+const handelSubmit = (event) => {
 	event.preventDefault();
-
 	
 	const username = event.target.username.value;
 	const password = event.target.password.value;
@@ -13,17 +11,21 @@ const handelSubmit = (event) =>{
 	const alert_msg = document.getElementById('notification');
 
 	axios.post("http://localhost:3000/api/student/login", {
-			username: username,
-			password: password
-		})
+		username: username,
+		password: password
+	})
 
-		
+
 		.then((response) => {
 
-			// console.log(response.statusText)
+			let studentId = response.data.output.Student_Id;
+			// console.log(response.data.output.Student_Id)
+			sessionStorage.setItem("Id", studentId);
+
+			console.log(sessionStorage.getItem("Id"))
 
 			if (response.status === 200) {
-				
+
 				alert_msg.innerHTML = `
 					<div class="fixed top-16 bg-green-100 w-full border border-green-400 text-green-700 px-4 py-3 rounded">
 						<div class="flex justify-center items-center">
@@ -32,7 +34,7 @@ const handelSubmit = (event) =>{
 					</div>
 				`
 
-				window.location = "/";
+				// window.location = "/";
 			}
 		})
 		.catch((error) => {
