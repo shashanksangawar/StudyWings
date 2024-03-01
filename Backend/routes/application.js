@@ -35,7 +35,7 @@ router.post("/login", async function(request, response)
 
     catch (error)
     {
-        response.status(500).send({'returncode': 1, 'message': 'Temporary Server Down, Please try again after some time', 'output': []});
+        response.status(500).send({'returncode': 1, 'message': error, 'output': []});
     }
 });
 
@@ -60,7 +60,7 @@ router.post("/add", async function(request, response)
 
     catch (error)
     {
-        response.status(500).send({'returncode': 1, 'message': 'Temporary Server Down, Please try again after some time', 'output': []});
+        response.status(500).send({'returncode': 1, 'message': error, 'output': []});
     }
 });
 
@@ -85,7 +85,7 @@ router.post("/fetch", async function(request, response)
 
     catch (error)
     {
-        response.status(500).send({'returncode': 1, 'message': 'Temporary Server Down, Please try again after some time', 'output': []});
+        response.status(500).send({'returncode': 1, 'message': error, 'output': []});
     }
 });
 
@@ -116,7 +116,7 @@ router.post("/fetch/admin", async function(request, response)
         }
         else 
         {
-            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
+            response.status(500).send({'returncode': 1, 'message': error, 'output': []});
         }
     }
 });
@@ -142,7 +142,7 @@ router.post("/update", async function(request, response)
 
     catch (error)
     {
-        response.status(500).send({'returncode': 1, 'message': 'Temporary Server Down, Please try again after some time', 'output': []});
+        response.status(500).send({'returncode': 1, 'message': error, 'output': []});
     }
 });
 

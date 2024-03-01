@@ -1,0 +1,12 @@
+---
+import Layout from "../../layout/Layout.astro";
+import Navbar from "../../components/Navbar";
+import LoginForm from "../../components/UniversityLogin";
+---
+
+<Layout title="Root Panel">
+	<div>
+		<Navbar client:only="react" />
+		<LoginForm client:only="react" />
+	</div>
+</Layout>

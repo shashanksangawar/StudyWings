@@ -148,7 +148,7 @@ router.post("/account/details/fetch", async function(request, response)
         }
         else 
         {
-            response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
+            response.status(500).send({'returncode': 1, 'message': error, 'output': []});
         }
     }
 });
@@ -260,7 +260,7 @@ router.post("/account/document/fetch", async function(request, response)
             }
             else 
             {
-                response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
+                response.status(500).send({'returncode': 1, 'message': error, 'output': []});
             }
         }
     }

@@ -68,12 +68,12 @@ const read = (student_id) =>
             if (results.length > 0) 
             {
                 // Destinations Fetched
-                resolve({'returncode': 0, 'message': 'Fetched Products', 'output': results});
+                resolve({'returncode': 0, 'message': 'Fetched', 'output': results});
             } 
             else 
             {
                 // No Destinations are available
-                reject({'returncode': 1, 'message': 'No Products found', 'output': []});
+                reject({'returncode': 1, 'message': 'No Data found', 'output': []});
             }
             });
         });

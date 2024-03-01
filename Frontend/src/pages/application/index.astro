@@ -1,0 +1,12 @@
+---
+import Layout from "../../layout/Layout.astro";
+import Navbar from "../../components/Navbar";
+import ApplicationFetch from "../../components/ApplicationFetch";
+---
+
+<Layout title="Student Application">
+	<div>
+		<Navbar client:only="react" />
+		<ApplicationFetch client:only="react" />
+	</div>
+</Layout>
