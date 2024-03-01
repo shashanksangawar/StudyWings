@@ -6,14 +6,15 @@ import axios from "axios";
 const Navbar = () => {
 
   const menu = useRef();
-  const [data, setData] = useState([]);
-  const [code, setCode] = useState();
-  const span = useRef();
-
+  const [code, setCode] = useState(0);
 
   const clickMe = () => {
     // console.log(menu.current.classList.contains("hidden"));
     menu.current.classList.toggle("hidden");
+  }
+
+  const clickLogout = () =>{
+    setCode(1)    
   }
 
   function logIn(){
@@ -21,21 +22,17 @@ const Navbar = () => {
   } 
 
   function logOut(){
-    return(<a className="flex gap-4" href="/"><i className="bi bi-box-arrow-right block"></i> logout</a>)
+    return(<a onClick={clickLogout} className="flex gap-4" href="/"><i className="bi bi-box-arrow-right block"></i> logout</a>)
   }
 
 
   useEffect(() => {
-    const code = sessionStorage.getItem("navcode")
-    // const id = 1;
-    // if (code === 0) {
-    //   setCode(code)
-    // }else {
-    //   const code1 = sessionStorage.setItem("navcode", id)
-    //   code === code1
-    // }
+    const storedCode = parseInt(sessionStorage.getItem("navcode"));
+    if (!isNaN(storedCode)) { // Check if parsing was successful
+      setCode(storedCode);
+    }
   }, []);
-  
+
   console.log(code, typeof code)
 
   return (
@@ -48,7 +45,7 @@ const Navbar = () => {
         </div>
 
 
-        <div ref={menu} id="navbar_float_menu" className="hidden absolute top-[9dvh] right-3 w-[300px] h-[250px] py-3 rounded-lg bg-[--bg]">
+        <div ref={menu} id="navbar_float_menu" className="hidden absolute top-[9dvh] right-3 z-10 w-[300px] h-[250px] py-3 rounded-lg bg-[--bg]">
           <div className="flex h-full flex-col justify-between items-center px-2 text-xl " >
             <div className="container flex justify-between items-center gap-8 py-4">
               <div className="w-[40%] flex justify-center items-center">
@@ -58,7 +55,7 @@ const Navbar = () => {
             </div>
             <span className="flex justify-center items-center hover:bg-[--color2] px-4 w-full h-[40px] rounded-lg"><a href="/">Home</a></span>
             <span className="flex justify-center items-center hover:bg-[--color2] px-4 w-full h-[40px] rounded-lg"><a href="/profile">Profile</a></span>
-            <span ref={span} className="flex justify-center items-center hover:bg-[--color2] px-4 bg-[--color2] w-full h-[40px] rounded-lg">
+            <span className="flex justify-center items-center hover:bg-[--color2] px-4 bg-[--color2] w-full h-[40px] rounded-lg">
               {code === 0 ? logOut() : logIn()}
             </span>
           </div>

@@ -1,12 +1,12 @@
 ---
 import Layout from "../../layout/Layout.astro";
 import Navbar from "../../components/Navbar";
-import ProfileDocument from "../../components/ProfileDocument";
+import UniversityIndex from "../../components/UniversityIndex";
 ---
 
 <Layout title="Home">
 	<div>
-		<Navbar client:load />
-		<ProfileDocument client:load />
+		<Navbar client:only="react" />
+		<UniversityIndex client:only="react" />
 	</div>
 </Layout>

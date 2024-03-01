@@ -3,9 +3,9 @@
 import axios from "axios";
 
 
-const handelSubmit = (event) =>{
+const handelSubmit = (event) => {
 	event.preventDefault();
-	
+
 	const username = event.target.username.value;
 	const password = event.target.password.value;
 
@@ -17,13 +17,13 @@ const handelSubmit = (event) =>{
 			password: password
 		})
 
-		
+
 		.then((response) => {
 
 			console.log(response.statusText)
 
 			if (response.status === 200) {
-				
+
 				alert_msg.innerHTML = `
 					<div class="fixed top-16 bg-green-100 w-full border border-green-400 text-green-700 px-4 py-3 rounded">
 						<div class="flex justify-center items-center">
@@ -31,7 +31,7 @@ const handelSubmit = (event) =>{
 						</div>
 					</div>
 				`
-				
+
 				// window.location = "/";
 			}
 		})
@@ -46,10 +46,13 @@ const LoginForm = () => {
 		<div className="h-screen flex justify-center items-center">
 			<div className="w-full max-w-sm max-h-full">
 				<form className="bg-white shadow-lg border border-gray-500 rounded-xl px-8 pt-6 pb-8 mb-4" onSubmit={handelSubmit}>
-					<div className="w-full text-gray-700 mb-3">
-						<a href="/register" className="mx-1 text-[--primary-color] underline">Sign up </a>
-						<span className="">/</span>
-						<a href="/login" className="mx-1 underline">Sign in</a>
+					<div className="w-full text-gray-700 mb-3 flex justify-between items-center">
+						<div>
+							<a href="/register" className="mx-1 text-[--primary-color] underline">Sign up </a>
+							<span className="">/</span>
+							<a href="/login" className="mx-1 underline">Sign in</a>
+						</div>
+						<h4 className="text-xl font-semibold">Root Login</h4>
 					</div>
 					<div className="mb-4">
 						<label className="block text-gray-700 text-sm font-bold mb-2">
