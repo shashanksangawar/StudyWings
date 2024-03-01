@@ -26,19 +26,18 @@ const StudentInfo = () =>{
 
 	return(
 		<div className="w-[60%]">
+			<div class="flex flex-col gap-4 justify-center items-center text-xl">
 
-			{data.map((item) => (
-				`
-				<div className="flex flex-col gap-4 justify-center items-center text-xl">
-					<div className="bg-sky-500  text-white">${item.Student_Name}</div>
-					<div>${item.Course_Name}</div>
-					<div>${item.Description}</div>
-					<div>${item.Start_date}</div>
-					<div>${item.End_date}</div>
-					<div>${item.Status}</div>
-				</div>
-				`
-			))}
+				{data.map((item) => (
+					`
+						<div class="bg-sky-500  text-white">${item.University_Name}</div>
+						<div>${item.Course_Name}</div>
+						<div>${item.Description}</div>
+						<div>${item.Application_Status}</div>
+					`
+				))}
+			</div>
+
 		</div>
 	);
 }

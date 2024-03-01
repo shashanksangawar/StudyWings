@@ -52,7 +52,7 @@ const ApplicationFetch = () => {
 								<th scope="col" className="w-[8%] px-6 py-3">
 									No.
 								</th>
-								<th scope="col" className="w-[44%] px-6 py-3">
+								<th scope="col" className="w-[40%] px-6 py-3">
 									Universities
 								</th>
 								<th scope="col" className="w-[20%] px-6 py-3">
@@ -60,6 +60,9 @@ const ApplicationFetch = () => {
 								</th>
 								<th scope="col" className="w-[20%] px-6 py-3">
 									Admission Process
+								</th>
+								<th scope="col" className="w-[20%] px-6 py-3">
+									University Ranking
 								</th>
 								<th scope="col" className="w-[8%] px-6 py-3">
 								</th>
@@ -76,7 +79,7 @@ const ApplicationFetch = () => {
 										</td>
 										<th className="px-6 py-4">
 											<div className="">
-												{items.University_Name}
+											<div className="text-3xl font-medium text-gray-900 inline-flex justify-center items-center">{items.University_Name}</div>
 												<div className="flex flex-col">
 													<div>Description : {items.Description}</div>
 													<div className="text-md inline-flex items-center text-yellow-300"><i className="bi bi-arrow-right"></i> Apply now</div>
@@ -85,12 +88,19 @@ const ApplicationFetch = () => {
 										</th>
 										<td className="px-6 py-4">
 											<div>
-												{items.Course_Name}
+												<div className="text-3xl font-medium text-gray-900 inline-flex justify-center items-center">{items.Course_Name} </div>
+												<div>Duration: {items.Course_Duration} Year</div>
+												<div>Fees: {items.Course_Fees}</div>
 											</div>
 										</td>
 										<td className="px-6 py-4">
 											<div>
 												{items.University_AdmissionProcess}
+											</div>
+										</td>
+										<td className="px-6 py-4">
+											<div>
+												#{items.University_Ranking}
 											</div>
 										</td>
 										<td className="px-6 py-4">

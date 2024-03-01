@@ -43,8 +43,7 @@ const ProfilePanel = () => {
 					<div className="w-[70%] h-full p-8 ">
 						<div id="thisitem" className="w-[100%] h-full px-8 flex flex-col justify-center">
 							<div className="flex flex-col justify-center items-center">
-								<div className="first">First Name:{data.Student_FirstName}</div>
-								<div className="first">Last Name:{data.Student_LastName}</div>
+								<div className="first">Student Name:{data.Student_FirstName} {data.Student_LastName}</div>
 								<div className="first">DOB:{data.Student_DOB}</div>
 								<div className="first">Address:{data.Student_Address}</div>
 							</div>
