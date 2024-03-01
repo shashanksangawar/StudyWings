@@ -16,15 +16,15 @@ router.post("/login", async function(request, response)
     {
         if(password=="admin")
         {
-            const insertionResult = await University.account_login(university_name);
+            const loginResult = await University.account_login(university_name);
 
-            if (insertionResult.returncode === 0) 
+            if (loginResult.returncode === 0) 
             {
-                response.status(200).send({'returncode': 0, 'message': insertionResult.message, 'output': []});
+                response.status(200).send({'returncode': 0, 'message': loginResult.message, 'output': loginResult.output});
             }
             else 
             {
-                response.status(500).send({'returncode': 1, 'message': insertionResult.message, 'output': []});
+                response.status(500).send({'returncode': 1, 'message': loginResult.message, 'output': []});
             }
         }
         else

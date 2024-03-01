@@ -25,7 +25,7 @@ const account_login = (university_name) =>
                 return;
             }
 
-            const query = 'SELECT * FROM universities WHERE University_Name = ?';
+            const query = 'SELECT * FROM UNIVERSITIES.universities WHERE University_Name = ?';
             connection.query(query, [university_name], (queryError, results) => 
             {
                 connection.release();
@@ -96,7 +96,8 @@ const read = (university_id) =>
               reject({'returncode': 1, 'message': err, 'output': []});
               return;
             }
-            const query = 'SELECT * FROM applications a, UNIVERSITIES.university_courses u, STUDENTS.students s, STUDENTS.student_registration sr, STUDENTS.student_documents sd,  WHERE a.CourseID=u.Course_Id AND a.StudentID=s.Student_Id AND sr.StudentID=s.Student_Id AND sd.StudentID=s.Student_Id AND u.UniversityID=?;';
+
+            const query = 'SELECT * FROM applications a, UNIVERSITIES.university_courses u, STUDENTS.students s, STUDENTS.student_registration sr, STUDENTS.student_documents sd WHERE a.CourseID=u.Course_Id AND a.StudentID=s.Student_Id AND sr.StudentID=s.Student_Id AND sd.StudentID=s.Student_Id AND u.UniversityID=?;';
             connection.query(query, [university_id], (queryError, results) => {
             connection.release();
     
@@ -107,9 +108,6 @@ const read = (university_id) =>
     
             if (results.length > 0) 
             {
-                results.forEach(element => {
-                    element.Image = Buffer.from(element.Image).toString('base64');
-                  });
                 // Destinations Fetched
                 resolve({'returncode': 0, 'message': 'Fetched Applications', 'output': results});
             } 
