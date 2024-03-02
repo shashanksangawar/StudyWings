@@ -1,20 +1,20 @@
-# RUNNING PROGRAM
 
+# 🚀 Project Structure
+
+Inside of your backend, you'll see the following folder structure:
+
+```yaml
+/
+├── backend_modules/
+│   └── students/
+│       └── account.js
+├── routes/
+│   └── student.js
+└── package.json
 ```
-git clone https://github.com/shashanksangawar/StudyWings
-cd StudyWings/Frontend
-npm install
-npm run dev
-cd ../Backend
-npm install
-npm test
-
-```
-----------------------------------------------------------------------------------
 
 
-# API CALLS
-
+# 🤖 API CALLS
 
 ----------------------------------------------------------------------------------
 
@@ -62,6 +62,6 @@ npm test
 | :------------------------      | :-----------------------------------------------  |:----------|
 | `Login`                        |   http://localhost:3000/api/application/login       |   `POST`  |
 | `View Student Info`            |   http://localhost:3000/api/application/fetch       |   `POST`  |
-| `Student will apply`           |   http://localhost:3000/api/application/register    |   `POST`  |
+| `Student will apply`           |   http://localhost:3000/api/application/add         |   `POST`  |
 | `University total applications`|   http://localhost:3000/api/application/fetch/admin |   `POST`  |
 | `Accept or Reject`             |   http://localhost:3000/api/application/update      |   `POST`  |

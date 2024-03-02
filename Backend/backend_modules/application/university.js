@@ -97,7 +97,7 @@ const read = (university_id) =>
               return;
             }
 
-            const query = 'SELECT * FROM applications a, UNIVERSITIES.university_courses u, STUDENTS.students s, STUDENTS.student_registration sr, STUDENTS.student_documents sd WHERE a.CourseID=u.Course_Id AND a.StudentID=s.Student_Id AND sr.StudentID=s.Student_Id AND sd.StudentID=s.Student_Id AND u.UniversityID=?;';
+            const query = 'SELECT * FROM applications a, UNIVERSITIES.university_courses u, STUDENTS.students s, STUDENTS.student_registration sr WHERE a.CourseID=u.Course_Id AND a.StudentID=s.Student_Id AND sr.StudentID=s.Student_Id AND u.UniversityID=?;';
             connection.query(query, [university_id], (queryError, results) => {
             connection.release();
     

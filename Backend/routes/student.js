@@ -79,10 +79,7 @@ router.post("/register", async function(request, response)
 router.post("/update", async function(request, response)
 {
 
-    if (request.session.userid) 
-    {
-        const userid = request.session.session_id;
-        const { username, password ,email, phone  } = request.body
+        const { username, password ,email, phone, userid  } = request.body
         try 
         {
             const updateResult = await account.account_update(username, password, email, phone, userid);
@@ -109,11 +106,6 @@ router.post("/update", async function(request, response)
                 response.status(500).send({'returncode': 1, 'message': 'Internal Server Error', 'output': []});
             }
         }
-    }
-    else 
-    {
-        response.status(400).send({'returncode': 1, 'message': 'No Session Found Please login or register', 'output': []});
-    }
 });
 
 
