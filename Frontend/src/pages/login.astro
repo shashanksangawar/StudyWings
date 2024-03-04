@@ -1,13 +1,14 @@
 ---
 import Layout from "../layout/Layout.astro";
+import Main from "../components/Main.astro";
 import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
 import "../assets/styles/index.css";
 ---
 
 <Layout title="Home">
-	<div>
+	<Main>
 		<Navbar client:load />
 		<LoginForm client:only="react" />
-	</div>
+	</Main>
 </Layout>

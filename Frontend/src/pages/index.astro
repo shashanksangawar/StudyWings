@@ -1,13 +1,14 @@
 ---
 import Layout from "../layout/Layout.astro";
 import Navbar from "../components/Navbar";
+import Main from "../components/Main.astro";
 import App from "../components/App";
 import "../assets/styles/index.css";
 ---
 
 <Layout title="Home">
-	<div>
+	<Main>
 		<Navbar client:only="react" />
 		<App client:only="react" />
-	</div>
+	</Main>
 </Layout>

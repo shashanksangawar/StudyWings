@@ -24,6 +24,15 @@ const handelSubmit = (event) => {
 			sessionStorage.setItem("Id", studentId);
 			sessionStorage.setItem("navcode", logincode);
 
+			if(logincode === 1)
+			{
+				sessionStorage.setItem("name", "User");
+			}else{
+				sessionStorage.setItem("name", username);
+			}
+
+			console.log(sessionStorage.getItem("navcode"))
+
 			console.log(sessionStorage.getItem("Id"))
 
 			if (response.status === 200) {

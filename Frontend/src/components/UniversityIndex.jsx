@@ -16,10 +16,9 @@ const UniversityIndex = () => {
 			setData(res.data.output)
 		}
 
-		fetchdata();		
+		fetchdata();
 	}, [])
 
-	console.log(data);
 
 	return (
 		<div className="container mx-auto">
@@ -42,25 +41,23 @@ const UniversityIndex = () => {
 								</th>
 							</tr>
 						</thead>
-						<tbody className="text-xl">
+						<tbody classNameName="text-xl">
 							{
-								data.map((item)=>(	
+								data.map((items) => {
 									<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-										<th scope="row" className="px-6 py-4 font-medium text-black">
-											{item.Student_FirstName} {item.Student_LastName}
+										<th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+											{items.Student_Name}
 										</th>
 										<td className="px-6 py-4">
-											Yashu yasu
 										</td>
 										<td className="px-6 py-4">
-											test
 										</td>
 										<td className="px-6 py-4">
 										</td>
 									</tr>
-								))
-								
+								})
 							}
+
 						</tbody>
 					</table>
 				</div>

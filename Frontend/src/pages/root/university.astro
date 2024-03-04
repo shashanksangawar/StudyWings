@@ -1,12 +1,13 @@
 ---
 import Layout from "../../layout/Layout.astro";
+import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
 import UniversityPage from "../../components/University";
 ---
 
 <Layout title="University page">
-	<div>
+	<Main>
 		<Navbar client:only="react" />
 		<UniversityPage client:only="react" />
-	</div>
+	</Main>
 </Layout>
