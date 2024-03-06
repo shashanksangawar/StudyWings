@@ -3,12 +3,14 @@ import Layout from "../../layout/Layout.astro";
 import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
 import ProfilePanel from "../../components/ProfileIndex";
+import ApplicationInfo from "../../components/ApplicationInfo";
 import "../../assets/styles/index.css";
 ---
 
-<Layout title="Home">
+<Layout title="Profile">
 	<Main>
 		<Navbar client:load />
 		<ProfilePanel client:load />
+		<ApplicationInfo client:load />
 	</Main>
 </Layout>

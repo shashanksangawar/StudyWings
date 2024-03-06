@@ -54,49 +54,49 @@ const ProfilePanel = () => {
 	}, []);
 
 	return (
-		<div className="w-full h-[92dvh] flex justify-center items-center bg-[#f6f7f9]">
-			<div className="w-[90%] h-[80dvh] mx-auto bg-white flex justify-center items-center rounded-[20px] shadow-[--bg] shadow-xl" >
+		<div className="w-full h-[92dvh] flex justify-center items-center bg-[--background]">
+			<div className="w-[90%] h-[80dvh] mx-auto flex justify-center items-center rounded-[20px] shadow-[--primary] shadow-md" >
 				<div className="w-[30%] h-full flex justify-center items-center">
 					<div className="w-[300px] h-[300px] flex justify-center items-center ">
-						<img id="img" className="rounded-full w-[200px] h-[200px] border-[5px] border-[#1d1d1b]" src={img1.src} alt="profile pic" />
+						<img id="img" className="rounded-full w-[200px] h-[200px] border-[5px]" src={img1.src} alt="profile pic" />
 					</div>
 				</div>
 
 				<div className="w-[50%] h-full p-8 ">
 					<form className="w-[80%] h-full px-8 flex flex-col justify-center" encType="multipart/form-data" onSubmit={handelSubmit} >
 						<div className="mb-4">
-							<label className="block text-gray-700 text-sm font-bold mb-2">
+							<label className="block text-sm font-bold mb-2">
 								First name
 							</label>
 							<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="first_name" type="text" placeholder="First name" />
 						</div>
 						<div className="mb-4">
-							<label className="block text-gray-700 text-sm font-bold mb-2">
+							<label className="block text-sm font-bold mb-2">
 								Last name
 							</label>
 							<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="last_name" type="text" placeholder="Lastname" />
 						</div>
 						<div className="mb-4">
-							<label className="block text-gray-700 text-sm font-bold mb-2">
+							<label className="block text-sm font-bold mb-2">
 								Date of birth
 							</label>
 							<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dob" type="date" placeholder="Dob" />
 						</div>
 						<div className="mb-4">
-							<label className="block text-gray-700 text-sm font-bold mb-2">
+							<label className="block text-sm font-bold mb-2">
 								Address
 							</label>
 							<textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" type="" placeholder="Address" rows={5}></textarea>
 						</div>
 						<div className="mb-4">
-							<label className="block text-gray-700 text-sm font-bold mb-2">
+							<label className="block text-sm font-bold mb-2">
 								Profile Picture
 							</label>
-							<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" type="text" placeholder="File Path" />
+							<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" type="text" placeholder="photo link" />
 						</div>
 						<div className="flex items-center justify-start gap-8">
-							<button className="bg-gradient-to-r from-[--ui] to-[--bg] hover:bg-gradient-to-r hover:from-[--bg] hover:to-[--ui] transition-colors font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
-							<button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="reset">Cancel</button>
+							<button className="bg-[--primary] text-[--background] hover:bg-[--primary-500] hover:text-[--text] transition-colors font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
+							<button className="bg-gray-500 hover:bg-gray-700 hover:text-[--text] text-[--background] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="reset">Cancel</button>
 						</div>
 					</form>
 				</div>

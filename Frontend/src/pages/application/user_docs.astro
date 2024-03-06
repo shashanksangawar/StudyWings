@@ -2,12 +2,14 @@
 import Layout from "../../layout/Layout.astro";
 import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
-import UniversityIndex from "../../components/UniversityIndex";
+// import UniversityIndex from "../../components/UniversityIndex";
+import UserDocs from "../../components/UserDocs";
+
 ---
 
 <Layout title="Home">
 	<Main>
 		<Navbar client:only="react" />
-		<UniversityIndex client:only="react" />
+		<UserDocs client:only="react" />
 	</Main>
 </Layout>

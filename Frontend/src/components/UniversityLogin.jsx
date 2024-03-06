@@ -1,5 +1,4 @@
 // Login Form Component
-// doing POST request using axios for the first time
 import axios from "axios";
 
 
@@ -36,11 +35,27 @@ const handelSubmit = (event) => {
 
 				sessionStorage.setItem("uni_id", unid);
 
-				// window.location = "/";
+				window.location = "/application/university";
+			}
+			else
+			{
+				alert_msg.innerHTML = `
+					<div class="fixed top-16 bg-red-100 w-full border border-red-400 text-red-700 px-4 py-3 rounded">
+						<div class="flex justify-center items-center">
+							<span class="text-3xl">Wrong Credentials</span>
+						</div>
+					</div>
+				`
 			}
 		})
 		.catch((error) => {
-			console.error(error);
+			alert_msg.innerHTML = `
+					<div class="fixed top-16 bg-red-100 w-full border border-red-400 text-red-700 px-4 py-3 rounded">
+						<div class="flex justify-center items-center">
+							<span class="text-3xl">${error}</span>
+						</div>
+					</div>
+				`
 		});
 }
 
@@ -71,7 +86,7 @@ const UniLogin = () => {
 						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" />
 					</div>
 					<div className="flex items-center justify-between">
-						<button className="bg-gradient-to-r from-[--bg] to-[--ui] hover:bg-gradient-to-r hover:from-[--ui] hover:to-[--bg] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+						<button className="px-4 py-2 my-3 bg-blue-600 text-white rounded-lg" type="submit">
 							Sign In
 						</button>
 						<a className="inline-block align-baseline font-bold text-sm text-[--primary-color] hover:text-[--primary-color]" href="#">

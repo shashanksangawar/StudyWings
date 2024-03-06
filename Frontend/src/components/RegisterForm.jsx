@@ -46,7 +46,7 @@ const RegisterForm = () => {
 			<div className="w-full max-w-sm">
 				<form className="bg-white shadow-lg border border-gray-500 rounded-xl px-8 pt-6 pb-8" onSubmit={handleSubmit}>
 					<div className="w-full text-gray-700 mb-3">
-						<a href="/login" className="mx-1 text-blue-700 underline">Sign in </a>
+						<a href="/login" className="mx-1 text-[--primary] underline">Sign in </a>
 						<span className="">/</span>
 						<a href="/register" className="mx-1 underline">Sign up</a>
 					</div>
@@ -75,10 +75,10 @@ const RegisterForm = () => {
 						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="phone no" />
 					</div>
 					<div className="flex items-center justify-between">
-						<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+						<button className="bg-[--primary] hover:bg-[--primary-500] hover:text-[--text] text-[--background] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
 							Sign In
 						</button>
-						<a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+						<a className="inline-block align-baseline font-bold text-sm text-[--primary] hover:text-[--primary-500]" href="#">
 							Forgot Password?
 						</a>
 					</div>

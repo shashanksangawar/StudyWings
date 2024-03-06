@@ -59,6 +59,7 @@ const CoursesPage = () => {
 		const start_date = event.target.start_date.value
 		const end_date = event.target.end_date.value
 		const status = event.target.status.value
+		const alert_msg = document.getElementById('notification');
 
 
 		axios.post("http://localhost:3000/api/root/add/course", {
@@ -73,13 +74,27 @@ const CoursesPage = () => {
 			status: status
 			})
 
-			.then((response) => {
-				console.log(response)
-		})
+			.then((response) => 
+			{
+				if (response.status === 200) {
+
+					alert_msg.innerHTML = `
+						<div class="fixed top-16 bg-green-100 w-full border border-green-400 text-green-700 px-4 py-3 rounded">
+							<div class="flex justify-center items-center">
+								<span class="text-3xl">Added Successfully</span>
+							</div>
+						</div>
+					`
+	
+					window.location = "/root/dashboard";
+				}
+			})
 	}
 
 	return (
 		<div className="w-full h-[92dvh] flex justify-center items-center bg-[#f6f7f9]">
+			<div id="notification" className="relative z-10 flex justify-center items-center"></div>
+
 			<div className="w-[90%] h-[80dvh] mx-auto bg-white flex justify-center items-center rounded-[20px] shadow-[--bg] shadow-xl" >
 
 				<div className="w-[80%] h-full p-8 flex justify-center items-center ">
