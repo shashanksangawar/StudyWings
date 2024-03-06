@@ -71,9 +71,16 @@ const StudentInfo = () => {
 										{item.University_AdmissionProcess}
 									</td>
 									<td class="px-6 py-4 text-right">
-
-										<span class="font-medium text-green-600 dark:text-green-500 hover:underline">{item.Application_Status}</span>
+										{item.Application_Status === "Accepted" ? 
+										(
+											<span class="font-medium text-green-600 dark:text-green-500 hover:underline">{item.Application_Status}</span>
+										)
+										: 
+										(
+											<span class="font-medium text-red-600 dark:text-red-500 hover:underline">{item.Application_Status}</span>
+										)}
 									</td>
+									
 								</tr>
 							))
 						}

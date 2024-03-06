@@ -65,7 +65,7 @@ const UserDocs = () => {
 		const app_id = parseInt(sessionStorage.getItem("Application_id"));
 		const accept_response = await axios.post("http://localhost:3000/api/application/update", {
             app_id: app_id,
-			app_status: "Accepted"
+			app_status: "Rejected"
         });
 
 		const alert_msg = document.getElementById('notification');

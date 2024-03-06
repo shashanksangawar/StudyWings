@@ -13,12 +13,18 @@ const ProfilePanel = () => {
 		
 			const fetchdata = async () => 
 			{
-		
-				const user = parseInt(sessionStorage.getItem("Id"));
-				const data = await axios.post("http://localhost:3000/api/student/account/details/fetch", {
-					user: user
-				})
-				setResponse(data.data.output);
+				try
+				{
+					const user = parseInt(sessionStorage.getItem("Id"));
+					const data = await axios.post("http://localhost:3000/api/student/account/details/fetch", {
+						user: user
+					})
+					setResponse(data.data.output);
+				}
+				catch(error)
+				{
+					window.location.href="/profile/add";
+				}
 			}
 		
 		fetchdata();

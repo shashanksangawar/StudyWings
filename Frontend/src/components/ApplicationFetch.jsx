@@ -22,8 +22,8 @@ const ApplicationFetch = () => {
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 
-		const course_id = ev.target.madar.value;
-		const student_id = uni_ID;
+		const course_id = parseInt(ev.target.madar.value);
+		const student_id = parseInt(sessionStorage.getItem("Id"));
 		const app_status = "Pending";
 		const alert_msg = document.getElementById('notification');
 
@@ -41,7 +41,7 @@ const ApplicationFetch = () => {
 					alert_msg.innerHTML = `
 						<div class="fixed top-16 bg-green-100 w-full border border-green-400 text-green-700 px-4 py-3 rounded">
 							<div class="flex justify-center items-center">
-								<span class="text-3xl">Applied Successfully</span>
+								<span class="text-3xl">Your Counselling Session Link will be provided shortly on your Email.</span>
 							</div>
 						</div>
 					`

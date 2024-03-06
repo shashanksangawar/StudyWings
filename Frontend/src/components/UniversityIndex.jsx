@@ -43,10 +43,10 @@ const UniversityIndex = () => {
 									Phone
 								</th>
 								<th scope="col" className="px-6 text-center py-3">
-									Documents
+									Status
 								</th>
 								<th scope="col" className="px-6 text-center py-3">
-									Actions
+									Documents
 								</th>
 							</tr>
 						</thead>
@@ -64,12 +64,11 @@ const UniversityIndex = () => {
 											{items.Student_Phone}
 										</td>
 										<td className="px-6 text-center py-4">
-										 
-											<button onClick={() => handleDoc(items.Student_Id, items.Application_Id)} className="px-3 py-1 mx-2 bg-blue-500 text-white rounded-lg">View</button>
+											{items.Application_Status}
 										</td>
 										<td className="px-6 text-center py-4">
-											<button className="px-3 py-1 mx-2 bg-green-500 text-white rounded-lg">Accept</button>
-											<button className="px-3 py-1 mx-2 bg-red-500 text-white rounded-lg">Reject</button>
+										 
+											<button onClick={() => handleDoc(items.Student_Id, items.Application_Id)} className="px-3 py-1 mx-2 bg-blue-500 text-white rounded-lg">View</button>
 										</td>
 									</tr>
 								))

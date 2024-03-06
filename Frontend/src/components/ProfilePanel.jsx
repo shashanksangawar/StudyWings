@@ -41,14 +41,11 @@ const ProfilePanel = () => {
 		})
 
 		.then((response) => {
-			const data = response.data.output.Student_ProfilePic;
+			if(response.status=="200")
+			{
+				window.location.href="/profile"
 
-			console.log(data)
-
-			const test = document.getElementById("Test");
-
-			test.innerHTML = `<img src=${data} alt="profile"/>`;
-			// console.log(response)
+			}
 		})
 
 	}, []);
