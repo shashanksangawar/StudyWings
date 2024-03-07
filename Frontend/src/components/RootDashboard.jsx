@@ -32,9 +32,6 @@ const RootDashboard = () => {
 						<td class="px-6 py-4">
 							${item.University_AdmissionProcess}
 						</td>
-						<td class="px-6 py-4 text-right">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-						</td>
 					</tr>
 					`
 				))
@@ -63,9 +60,6 @@ const RootDashboard = () => {
 						</th>
 						<td class="px-6 py-4">
 							${item.Description}
-						</td>
-						<td class="px-6 py-4 text-right">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
 						</td>
 					</tr>
 					`
@@ -110,9 +104,6 @@ const RootDashboard = () => {
 						</td>
 						<td class="px-6 py-4">
 							${item.Course_Status}
-						</td>
-						<td class="px-6 py-4 text-right">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
 						</td>
 					</tr>
 					`
@@ -162,9 +153,7 @@ const RootDashboard = () => {
 									<th scope="col" className="px-6 py-3">
 										Course Status
 									</th>
-									<th scope="col" className="px-6 py-3">
-										<span className="sr-only">Edit</span>
-									</th>
+									
 								</tr>
 							</thead>
 							<tbody id="tbody1">
@@ -195,9 +184,7 @@ const RootDashboard = () => {
 									<th scope="col" className="px-6 py-3">
 										Admission Process
 									</th>
-									<th scope="col" className="px-6 py-3">
-										<span className="sr-only">Edit</span>
-									</th>
+									
 								</tr>
 							</thead>
 							<tbody id="tbody2">
@@ -219,8 +206,7 @@ const RootDashboard = () => {
 									<th scope="col" className="px-6 py-3">
 										Description
 									</th>
-									<th scope="col" className="px-6 py-3">
-									</th>
+									
 								</tr>
 							</thead>
 							<tbody id="tbody3">
