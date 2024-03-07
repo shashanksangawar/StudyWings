@@ -44,35 +44,35 @@ const RegisterForm = () => {
 	return (
 		<div className="h-screen flex justify-center items-center">
 			<div className="w-full max-w-sm">
-				<form className="bg-white shadow-lg border border-gray-500 rounded-xl px-8 pt-6 pb-8" onSubmit={handleSubmit}>
-					<div className="w-full text-gray-700 mb-3">
+				<form className="shadow-[--primary] shadow-md border border-[--primary] rounded-2xl px-8 pt-6 pb-8" onSubmit={handleSubmit}>
+					<div className="w-full text-white mb-3">
 						<a href="/login" className="mx-1 text-[--primary] underline">Sign in </a>
 						<span className="">/</span>
 						<a href="/register" className="mx-1 underline">Sign up</a>
 					</div>
 					<div className="mb-4">
-						<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+						<label className="block text-sm font-bold mb-2" htmlFor="username">
 							Username
 						</label>
-						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
+						<input className="shadow appearance-none border text-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
 					</div>
 					<div className="mb-6">
-						<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+						<label className="block text-sm font-bold mb-2" htmlFor="email">
 							Email
 						</label>
-						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email" />
+						<input className="shadow appearance-none border text-black rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email" />
 					</div>
 					<div className="mb-6">
-						<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+						<label className="block text-sm font-bold mb-2" htmlFor="password">
 							Password
 						</label>
-						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" />
+						<input className="shadow appearance-none border text-black rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" />
 					</div>
 					<div className="mb-6">
-						<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+						<label className="block text-sm font-bold mb-2" htmlFor="phone">
 							Phone No
 						</label>
-						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="phone no" />
+						<input className="shadow appearance-none border text-black rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="phone no" />
 					</div>
 					<div className="flex items-center justify-between">
 						<button className="bg-[--primary] hover:bg-[--primary-500] hover:text-[--text] text-[--background] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

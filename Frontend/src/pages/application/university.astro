@@ -3,11 +3,14 @@ import Layout from "../../layout/Layout.astro";
 import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
 import UniversityIndex from "../../components/UniversityIndex";
+import Footer from "../../components/Footer";
+
 ---
 
 <Layout title="Home">
 	<Main>
 		<Navbar client:only="react" />
 		<UniversityIndex client:only="react" />
+		<Footer client:only="react" />
 	</Main>
 </Layout>

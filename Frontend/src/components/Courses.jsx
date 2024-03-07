@@ -92,10 +92,10 @@ const CoursesPage = () => {
 	}
 
 	return (
-		<div className="w-full h-[92dvh] flex justify-center items-center bg-[#f6f7f9]">
+		<div className="w-full h-[92dvh] flex justify-center items-center">
 			<div id="notification" className="relative z-10 flex justify-center items-center"></div>
 
-			<div className="w-[90%] h-[80dvh] mx-auto bg-white flex justify-center items-center rounded-[20px] shadow-[--bg] shadow-xl" >
+			<div className="w-[90%] h-[80dvh] mx-auto bg-[--background] flex justify-center items-center rounded-[20px] shadow-[--primary] shadow-md border border-[--primary] rounded-3xl" >
 
 				<div className="w-[80%] h-full p-8 flex justify-center items-center ">
 					<form className="w-[80%] h-full px-8 flex flex-col justify-center" encType="multipart/form-data" onSubmit={handelSubmit} >
@@ -103,24 +103,24 @@ const CoursesPage = () => {
 						<div className="flex justify-around gap-8">
 							<div className="container w-[50%]">
 								<div id="uni_id" className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										Select university
+									<label className="block  text-sm font-bold mb-2">
+										Select University
 									</label>
 									<select id="university_id" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 									</select>
 								</div>
 
 								<div id="cont_id" className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										Select country
+									<label className="block  text-sm font-bold mb-2">
+										Select Country
 									</label>
 									<select id="country_id" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 									</select>
 								</div>
 
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										status
+									<label className="block  text-sm font-bold mb-2">
+										Course Status
 									</label>
 									<select id="status" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 										<option value="Active">Active</option>
@@ -129,8 +129,8 @@ const CoursesPage = () => {
 								</div>
 
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										description
+									<label className="block  text-sm font-bold mb-2">
+										Course Description
 									</label>
 									<textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="Description" rows={5}></textarea>
 								</div>
@@ -138,42 +138,42 @@ const CoursesPage = () => {
 							</div>
 							<div className="container w-[50%]">
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										Name
+									<label className="block  text-sm font-bold mb-2">
+										Course Name
 									</label>
 									<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name" rows={4} />
 								</div>
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										duration
+									<label className="block  text-sm font-bold mb-2">
+										Course Duration
 									</label>
 									<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="duration" type="number" placeholder="Duration"/>
 								</div>
 
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										fees
+									<label className="block  text-sm font-bold mb-2">
+										Course Fees
 									</label>
 									<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fees" type="text" placeholder="fees" rows={4} />
 								</div>
 
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										start date
+									<label className="block  text-sm font-bold mb-2">
+										Start Date
 									</label>
 									<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_date" type="date" rows={4} />
 								</div>
 
 								<div className="mb-4">
-									<label className="block text-gray-700 text-sm font-bold mb-2">
-										end date
+									<label className="block  text-sm font-bold mb-2">
+										End Date
 									</label>
 									<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="end_date" type="date" />
 								</div>
 							</div>
 						</div>
 						<div className="flex items-center justify-start gap-8 mt-4">
-							<button className="bg-gradient-to-r from-[--ui] to-[--bg] hover:bg-gradient-to-r hover:from-[--bg] hover:to-[--ui] transition-colors font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
+							<button className="bg-[--primary] hover:bg-[--primary-400] text-[--background] transition-colors font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
 							<button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="reset">Cancel</button>
 						</div>
 					</form>

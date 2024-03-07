@@ -104,9 +104,9 @@ const ApplicationFetch = () => {
 										</td>
 										<th className="px-6 py-4">
 											<div className="font-large text-gray-900 whitespace-nowrap dark:text-white">
-												{items.University_Name}
+												<div className="text-2xl">{items.University_Name}</div>
 												<div className="flex flex-col">
-													<div className="font-medium text-gray-700">{items.University_Location}</div>
+													<div className="font-bold text-gray-700">{items.University_Location}</div>
 													<div className="font-medium text-gray-700">Description : {items.Description}</div>
 												</div>
 											</div>
@@ -114,7 +114,7 @@ const ApplicationFetch = () => {
 										<td className="px-6 py-4">
 											<div className="font-large text-gray-900 whitespace-nowrap dark:text-white">
 												<div className="flex flex-col">
-													<div className="font-medium text-gray-700">{items.Course_Name}</div>
+													<div className="font-medium text-2xl text-gray-700">{items.Course_Name}</div>
 													<div className="font-medium text-gray-700">Description : {items.Course_Description}</div>
 												</div>
 											</div>
@@ -122,7 +122,7 @@ const ApplicationFetch = () => {
 										<td className="px-6 py-4">
 											<div className="font-large text-gray-900 whitespace-nowrap dark:text-white">
 												
-												<div className="text-red-600 ">₹{items.Course_Fees}</div>
+												<div className="text-red-600 text-2xl">₹{items.Course_Fees}</div>
 
 												<div className="flex flex-col">
 													<div className="font-medium text-gray-700">Duration : {items.Course_Duration} Years</div>
@@ -135,8 +135,8 @@ const ApplicationFetch = () => {
 											</div>
 										</td>
 										<td className="px-6 py-4">
-											<div className="font-large text-gray-900 whitespace-nowrap dark:text-white">
-												{items.University_Ranking}
+											<div className="font-large text-green-900 whitespace-nowrap dark:text-white text-3xl flex items-center justify-center">
+												#{items.University_Ranking}
 											</div>
 										</td>
 										<td className="px-6 py-4">

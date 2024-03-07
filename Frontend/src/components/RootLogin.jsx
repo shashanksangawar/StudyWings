@@ -63,29 +63,28 @@ const LoginForm = () => {
 			<div id="notification" className="relative z-10 flex justify-center items-center"></div>
 
 			<div className="w-full max-w-sm max-h-full">
-				<form className="bg-white shadow-lg border border-gray-500 rounded-xl px-8 pt-6 pb-8 mb-4" onSubmit={handelSubmit}>
-					<div className="w-full text-gray-700 mb-3 flex justify-between items-center">
+				<form className="shadow-[--primary] shadow-md border border-[--primary] rounded-3xl px-8 pt-6 pb-8 mb-4" onSubmit={handelSubmit}>
+					<div className="w-full text-white mb-3 flex justify-between items-center">
 						<div>
-							<a href="/register" className="mx-1 text-[--primary-color] underline">Sign up </a>
-							<span className="">/</span>
-							<a href="/login" className="mx-1 underline">Sign in</a>
+							
+							<a href="/root" className="mx-1 text-[--primary] underline">Sign in</a>
 						</div>
 						<h4 className="text-xl font-semibold">Root Login</h4>
 					</div>
 					<div className="mb-4">
-						<label className="block text-gray-700 text-sm font-bold mb-2">
+						<label className="block text-white text-sm font-bold mb-2">
 							Username
 						</label>
-						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
+						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
 					</div>
 					<div className="mb-6">
-						<label className="block text-gray-700 text-sm font-bold mb-2">
+						<label className="block text-white text-sm font-bold mb-2">
 							Password
 						</label>
-						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" />
+						<input className="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" />
 					</div>
 					<div className="flex items-center justify-between">
-						<button className="bg-blue-600 text-white rounded-lg font-bold py-2 px-4 rounded" type="submit">
+						<button className="bg-[--primary] hover:bg-[--primary-400] text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
 							Sign In
 						</button>
 						<a className="inline-block align-baseline font-bold text-sm text-[--primary-color] hover:text-[--primary-color]" href="#">

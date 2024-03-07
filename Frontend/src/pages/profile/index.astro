@@ -4,6 +4,7 @@ import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
 import ProfilePanel from "../../components/ProfileIndex";
 import ApplicationInfo from "../../components/ApplicationInfo";
+import Footer from "../../components/Footer";
 import "../../assets/styles/index.css";
 ---
 
@@ -12,5 +13,6 @@ import "../../assets/styles/index.css";
 		<Navbar client:load />
 		<ProfilePanel client:load />
 		<ApplicationInfo client:load />
+		<Footer client:load />
 	</Main>
 </Layout>

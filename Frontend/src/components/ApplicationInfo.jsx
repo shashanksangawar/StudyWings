@@ -5,28 +5,26 @@ const StudentInfo = () => {
 
 	const [data, setData] = useState([]);
 
+	const fetchinfo = async () => {
+
+		const student_id = parseInt(sessionStorage.getItem("Id"));
+
+		const res = await axios.post("http://localhost:3000/api/application/fetch", {
+			student_id: student_id
+		})
+		setData(res.data.output);
+	}
+
 	useEffect(() => {
-
-		const fetchinfo = async () => {
-
-			const student_id = parseInt(sessionStorage.getItem("Id"));
-
-			const res = await axios.post("http://localhost:3000/api/application/fetch", {
-				student_id: student_id
-			})
-			setData(res.data.output);
-		}
-
 		fetchinfo();
-
 	}, []);
 
 
 	return (
-		<div className="w-[60%]">
+		<div className="w-full">
 			<div className="flex flex-col gap-4 justify-center items-center text-xl">
-				<table className="w-full text-sm text-left rtl:text-right bg-[--background]">
-					<thead className="text-l text-white uppercase bg-[--bg] bg-[--primary]">
+				<table className="w-full text-sm text-left rtl:text-right bg-[--background] shadow-[--primary] shadow-md">
+					<thead className="text-l text-white uppercase bg-[--primary]">
 						<tr>
 							<th scope="col" className="px-6 py-3">
 								University Name
@@ -71,16 +69,16 @@ const StudentInfo = () => {
 										{item.University_AdmissionProcess}
 									</td>
 									<td class="px-6 py-4 text-right">
-										{item.Application_Status === "Accepted" ? 
-										(
-											<span class="font-medium text-green-600 dark:text-green-500 hover:underline">{item.Application_Status}</span>
-										)
-										: 
-										(
-											<span class="font-medium text-red-600 dark:text-red-500 hover:underline">{item.Application_Status}</span>
-										)}
+										{item.Application_Status === "Accepted" ?
+											(
+												<span class="font-medium text-green-600 dark:text-green-500 hover:underline">{item.Application_Status}</span>
+											)
+											:
+											(
+												<span class="font-medium text-red-600 dark:text-red-500 hover:underline">{item.Application_Status}</span>
+											)}
 									</td>
-									
+
 								</tr>
 							))
 						}

@@ -3,6 +3,7 @@ import Layout from "../layout/Layout.astro";
 import Main from "../components/Main.astro";
 import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
+import Footer from "../components/Footer";
 import "../assets/styles/index.css";
 ---
 
@@ -10,5 +11,6 @@ import "../assets/styles/index.css";
 	<Main>
 		<Navbar client:load />
 		<LoginForm client:only="react" />
+		<Footer client:load />
 	</Main>
 </Layout>

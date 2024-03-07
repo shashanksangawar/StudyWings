@@ -3,11 +3,13 @@ import Layout from "../layout/Layout.astro";
 import Main from "../components/Main.astro";
 import Navbar from "../components/Navbar";
 import RegisterForm from "../components/RegisterForm";
+import Footer from "../components/Footer";
 ---
 
 <Layout title="Home">
 	<Main>
 		<Navbar client:load />
 		<RegisterForm client:only />
+		<Footer client:load />
 	</Main>
 </Layout>

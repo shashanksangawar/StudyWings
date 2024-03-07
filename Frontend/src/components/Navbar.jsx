@@ -29,11 +29,11 @@ const Navbar = () => {
   }
 
   function logIn() {
-    return <a className="flex gap-4" href="/login"><i className="bi bi-box-arrow-right block"></i> Sign Up</a>
+    return <a className="flex gap-4" href="/login"><i className="bi bi-box-arrow-right block"></i> Sign In</a>
   }
 
   function logOut() {
-    return (<a onClick={clickLogout} className="flex gap-4" href="/"><i className="bi bi-box-arrow-right block"></i> logout</a>)
+    return (<a onClick={clickLogout} className="flex gap-4" href="/"><i className="bi bi-box-arrow-right block"></i> Logout</a>)
   }
 
 

@@ -3,11 +3,14 @@ import Layout from "../../layout/Layout.astro";
 import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
 import ProfilePanel from "../../components/ProfilePanelUpdate";
+import Footer from "../../components/Footer";
+
 ---
 
 <Layout title="Profile">
 	<Main>
 		<Navbar client:load />
 		<ProfilePanel client:only="react" />
+		<Footer client:load />
 	</Main>
 </Layout>

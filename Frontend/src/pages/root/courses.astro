@@ -3,11 +3,13 @@ import Layout from "../../layout/Layout.astro";
 import Main from "../../components/Main.astro";
 import Navbar from "../../components/Navbar";
 import CoursesPage from "../../components/Courses";
+import Footer from "../../components/Footer";
 ---
 
-<Layout title="Country Page">
+<Layout title="Courses Page">
 	<Main>
 		<Navbar client:only="react" />
 		<CoursesPage client:only="react" />
+		<Footer client:only="react" />
 	</Main>
 </Layout>
